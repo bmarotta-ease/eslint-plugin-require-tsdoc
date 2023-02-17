@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-tsdoc-require",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ensures that all typescript exported types and classes have TSDoc comments",
   "keywords": [
     "eslint",

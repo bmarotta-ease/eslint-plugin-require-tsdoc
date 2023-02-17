@@ -20,6 +20,22 @@ const ruleTester = new RuleTester({
 });
 ruleTester.run("require", rule, {
   valid: [
+    // Valid default export
+    `
+/**
+ * This is MyReactSomething exported 
+ */
+const MyReactSomething = ({
+  myProp
+}: any) => {
+  const [myState, setMyState] = useState('');
+
+  return ("");
+};
+
+export default MyReactSomething;
+`,
+
     // A valid type declaration
     `
     /**
@@ -93,6 +109,12 @@ export function thisIsMyFunction() {
 function nonExportedFunction() { 
   return false;
 }`,
+    // Default class declaration
+    `/** This is default class */
+      class MyDefaultClass {};
+
+      export default MyDefaultClass;
+      `
   ],
 
   invalid: [
@@ -187,6 +209,42 @@ export class MyClass {}`,
         {
           message: "Missing TSDoc for enum MyEnum",
           type: "TSEnumDeclaration",
+        },
+      ],
+    },
+
+    // Invalid default export
+    {
+      code: `// This is MyReactSomething exported 
+            const MyReactSomething = ({
+              myProp
+            }: any) => {
+              const [myState, setMyState] = useState('');
+
+              return ("");
+            };
+
+            export default MyReactSomething;
+            `,
+      errors: [
+        {
+          message: "Missing TSDoc for variable MyReactSomething",
+          type: "VariableDeclaration",
+        },
+      ],
+    },
+
+    // Invalid default export
+    {
+      code: `// This is default class
+            class MyDefaultClass {};
+
+            export default MyDefaultClass;
+            `,
+      errors: [
+        {
+          message: "Missing TSDoc for class MyDefaultClass",
+          type: "ClassDeclaration",
         },
       ],
     },
