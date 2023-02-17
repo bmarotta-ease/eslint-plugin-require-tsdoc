@@ -1,4 +1,4 @@
-# Ensures that all typescript exported types and classes have TSDoc comments (`tsdoc-require/require-tsdoc`)
+# Ensures that all typescript exported types and classes have TSDoc comments (`tsdoc-require/require`)
 
 <!-- end auto-generated rule header -->
 

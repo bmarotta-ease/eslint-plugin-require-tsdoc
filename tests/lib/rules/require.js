@@ -8,7 +8,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/require-tsdoc"),
+const rule = require("../../../lib/rules/require"),
   RuleTester = require("eslint").RuleTester;
 
 //------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ const rule = require("../../../lib/rules/require-tsdoc"),
 const ruleTester = new RuleTester({
   parser: require.resolve("@typescript-eslint/parser"),
 });
-ruleTester.run("require-tsdoc", rule, {
+ruleTester.run("require", rule, {
   valid: [
     // A valid type declaration
     `
